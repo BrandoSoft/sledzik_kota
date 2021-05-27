@@ -71,3 +71,17 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## How to API
+
+- Add to DB
+
+```Post coords
+
+{
+	"hid": "...",
+  "latitude": "...",
+  "longitude": "...",
+	"date": "2021-12-11 00:00:01"
+}
+```
