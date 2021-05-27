@@ -76,7 +76,8 @@ Nest is [MIT licensed](LICENSE).
 
 - Add to DB
 
-```Post coords
+```bash
+Post coords
 
 {
 	"hid": "...",
