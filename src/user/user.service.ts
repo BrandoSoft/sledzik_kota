@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { RegisterUserResponse } from "src/interfaces/user";
+import { RegisterUserResponse, RegisterUserResponseArray } from "src/interfaces/user";
 import { RegisterDto } from "./dto/register.dto";
 import { User } from "./user.entity";
 
@@ -18,6 +18,11 @@ export class UserService {
         await user.save();
 
         return user;
+    }
+
+    async getAllUsers(): Promise<RegisterUserResponseArray>{
+
+        return User.find();
     }
 
 }

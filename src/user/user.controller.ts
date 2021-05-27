@@ -1,5 +1,5 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
-import { RegisterUserResponse } from 'src/interfaces/user';
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
+import { RegisterUserResponse, RegisterUserResponseArray } from 'src/interfaces/user';
 import { RegisterDto } from './dto/register.dto';
 import { UserService } from './user.service';
 
@@ -9,12 +9,15 @@ export class UserController {
         @Inject(UserService) private userService: UserService,
     ){
     }
-
+    @Get('/')
+        showUsers(): Promise<RegisterUserResponseArray>{
+            return this.userService.getAllUsers();
+        }
 
     @Post('/register')
-    register(
-        @Body() newUser: RegisterDto,
-    ): Promise<RegisterUserResponse>{
-        return this.userService.register(newUser)
-    }
+        register(
+            @Body() newUser: RegisterDto,
+        ): Promise<RegisterUserResponse>{
+            return this.userService.register(newUser)
+        }
 }

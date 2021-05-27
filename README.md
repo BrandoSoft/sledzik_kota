@@ -72,7 +72,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
-## How to API
+## How to API (coords)
 
 - Add to DB
 
@@ -94,6 +94,7 @@ GET /:hid
 
 [
     {...},
+
     {
       "id": "...",
       "hid": "hardware ID",
@@ -103,4 +104,40 @@ GET /:hid
     },
     {...}
 ]
+```
+
+## How To API (users)
+
+- register user
+
+```bash
+POST /user/register
+
+{
+    {
+      "email": "user@example.com",
+      "name": "Username",
+      "hid": "HardwareID"
+    }
+}
+```
+
+- Get all users
+
+```bash
+Get /user
+
+[
+  {
+    ...
+  },
+  {
+    "id": "2aae853d-2afd-4453-9ea7-7eed1af9f076",
+    "name": "UserName",
+    "email": "user@example.com",
+    "hid": "Hardware ID"
+  },
+  {
+    ...
+  },
 ```
