@@ -77,12 +77,25 @@ Nest is [MIT licensed](LICENSE).
 - Add to DB
 
 ```bash
-Post coords
+POST /coords
 
 {
-	"hid": "...",
-  "latitude": "...",
-  "longitude": "...",
-	"date": "2021-12-11 00:00:01"
+    "hid": "...",
+    "latitude": "...",
+    "longitude": "...",
+    "date": "2021-12-11 00:00:01"
+}
+```
+
+- Add to DB
+
+```bash
+GET /:hid
+
+{
+    "hid": "...",
+    "latitude": "...",
+    "longitude": "...",
+    "date": "2021-12-11 00:00:01"
 }
 ```
