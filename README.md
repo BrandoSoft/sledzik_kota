@@ -87,15 +87,20 @@ POST /coords
 }
 ```
 
-- Add to DB
+- Get all coords by hardware ID
 
 ```bash
 GET /:hid
 
-{
-    "hid": "...",
-    "latitude": "...",
-    "longitude": "...",
-    "date": "2021-12-11 00:00:01"
-}
+[
+    {...},
+    {
+      "id": "...",
+      "hid": "hardware ID",
+      "latitude": "17.392579",
+      "longitude": "6.924446",
+      "date": "2021-12-10T23:00:01.000Z"
+    },
+    {...}
+]
 ```
