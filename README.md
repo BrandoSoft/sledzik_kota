@@ -91,19 +91,6 @@ POST /coords
 
 ```bash
 GET /:hid
-
-[
-    {...},
-
-    {
-      "id": "...",
-      "hid": "hardware ID",
-      "latitude": "17.392579",
-      "longitude": "6.924446",
-      "date": "2021-12-10T23:00:01.000Z"
-    },
-    {...}
-]
 ```
 
 ## How To API (users)
@@ -126,20 +113,15 @@ POST /user/register
 
 ```bash
 Get /user
-
-[
-  {
-    ...
-  },
-  {
-    "id": "2aae853d-2afd-4453-9ea7-7eed1af9f076",
-    "name": "UserName",
-    "email": "user@example.com",
-    "hid": "Hardware ID"
-  },
-  {
-    ...
-  },
 ```
 
-trying to deploy on heroku
+- Get user by: name/mail/hid
+
+```bash
+Get /user/name/:name
+
+Get /user/email/:email
+
+Get /user/hid/:hid
+
+```

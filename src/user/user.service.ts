@@ -25,4 +25,17 @@ export class UserService {
         return User.find();
     }
 
+    async getUserByName(name: RegisterDto): Promise<RegisterUserResponseArray>{
+
+        return User.find(name);
+    }
+
+    async getUserByHid(hid: RegisterDto): Promise<RegisterUserResponseArray>{
+
+        return User.find(hid)
+    }
+    async getUserByMail(email: RegisterDto): Promise<RegisterUserResponseArray>{
+
+        return User.find(email)
+    }
 }
