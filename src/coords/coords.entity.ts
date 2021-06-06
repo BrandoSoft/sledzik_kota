@@ -16,5 +16,5 @@ export class Coords extends BaseEntity{
     longitude: string;
 
     @Column()
-    date: Date;
+    date: string;
 }

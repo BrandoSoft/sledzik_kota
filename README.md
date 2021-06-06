@@ -90,7 +90,7 @@ POST /coords
 - Get all coords by hardware ID
 
 ```bash
-GET /:hid
+GET coords/:hid
 ```
 
 ## How To API (users)

@@ -4,7 +4,7 @@ import { type } from "os";
 export interface CoordsInterfaceResponse {
   id: string;
   hid: string;
-  date: Date;
+  date: string;
   latitude: string;
   longitude: string;
 }
