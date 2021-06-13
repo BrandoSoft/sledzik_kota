@@ -87,6 +87,25 @@ POST /coords
 }
 ```
 
+```bash
+POST /coords/table
+
+[
+  {
+    "hid": "async",
+    "latitude": "52.20899",
+    "longitude": "21.04956\r",
+    "date": "4-5-2021 16:35:43"
+  },
+  {
+    "hid": "async",
+    "latitude": "52.20888",
+    "longitude": "21.04925\r",
+    "date": "4-5-2021 16:36:09"
+  }
+	]
+```
+
 - Get all coords by hardware ID
 
 ```bash

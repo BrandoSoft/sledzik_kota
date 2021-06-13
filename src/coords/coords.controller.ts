@@ -29,4 +29,11 @@ export class CoordsController {
    return this.coordsService.addCordsToDb(newCoords)
   }
 
+  @Post ('/table')
+  addTableOfCoordsToDatabase(
+    @Body() newTable: addNewCoordsDto[],
+  ): Promise<addNewCoordsDto[]>{
+    return this.coordsService.addTableOfCoordsToDB(newTable)
+  }
+  
 }

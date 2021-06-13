@@ -22,7 +22,61 @@ export class CoordsService {
 
         await coords.save();
 
+
         return coords;
     }
 
+    async addTableOfCoordsToDB(newTable:addNewCoordsDto[]): Promise<CoordsInterfaceResponse[]>{
+
+            newTable.forEach(async (item) => {
+            const coords = new Coords();
+
+            coords.date = item.date;
+            coords.hid = item.hid;
+            coords.latitude = item.latitude;
+            coords.longitude = item.longitude;
+
+             await coords.save();
+        });
+
+        
+
+        return newTable
+    }
+
 }
+
+
+// {	
+// 	"hid": "000001",
+//   "latitude": "dasdasd",
+//   "longitude": "waszggggka",
+// 	"date": "2021-12-11 00:00:01"
+// }
+
+// [
+//     {
+//       "hid": "128",
+//       "latitude": "52.20899",
+//       "longitude": "21.04956",
+//       "date": "4-5-2021 16:35:43"
+//     },
+//     {
+//       "hid": "128",
+//       "latitude": "52.20888",
+//       "longitude": "21.04925",
+//       "date": "4-5-2021 16:36:09"
+//     },
+//     {
+//       "hid": "128",
+//       "latitude": "52.20887",
+//       "longitude": "21.04925",
+//       "date": "4-5-2021 16:37:41"
+//     },
+//     {    
+//       "hid": "128",
+//       "latitude": "52.20888",
+//       "longitude": "21.04934",
+//       "date": "4-5-2021 16:36:24"
+//     }
+//       ]

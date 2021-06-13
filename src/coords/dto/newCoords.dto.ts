@@ -5,3 +5,4 @@ export class addNewCoordsDto{
   latitude: string;
   longitude: string;
 }
+
