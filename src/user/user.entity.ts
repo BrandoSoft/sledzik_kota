@@ -13,5 +13,14 @@ export class User extends BaseEntity{
     email: string;
 
     @Column()
+    pwdHash: string;
+
+    @Column({
+        nullable: true,
+        default: null,
+    })
+    currentTokenId: string | null;
+
+    @Column()
     hid: string;
 }

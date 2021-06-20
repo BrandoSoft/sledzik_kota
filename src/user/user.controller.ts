@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { UserObj } from 'src/decorators/user-obj.decorator';
 import { RegisterUserResponse, RegisterUserResponseArray } from 'src/interfaces/user';
 import { RegisterDto } from './dto/register.dto';
 import { User } from './user.entity';
@@ -11,7 +13,11 @@ export class UserController {
     ){
     }
     @Get('/')
-        showUsers(): Promise<RegisterUserResponseArray>{
+    @UseGuards(AuthGuard('jwt'))
+        showUsers(
+            @UserObj() user: User,
+        ): Promise<RegisterUserResponseArray>{
+            console.log({user})
             return this.userService.getAllUsers();
         }
 
