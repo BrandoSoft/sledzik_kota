@@ -17,8 +17,10 @@ export class UserController {
         showUsers(
             @UserObj() user: User,
         ): Promise<RegisterUserResponseArray>{
-            console.log({user})
-            return this.userService.getAllUsers();
+            
+            const isAdmin = user;
+            
+            return this.userService.getAllUsers(isAdmin);
         }
 
     @Get('/name/:name')

@@ -23,4 +23,7 @@ export class User extends BaseEntity{
 
     @Column()
     hid: string;
+
+    @Column()
+    isAdmin: boolean;
 }

@@ -8,8 +8,8 @@ import { hashPwd } from "./utils/hash-pwd";
 export class UserService {
 
     filter(user: User): RegisterUserResponse {
-     const {id, email, hid} = user;
-     return {id, email, hid};   
+     const {id, email, hid, isAdmin} = user;
+     return {id, email, hid, isAdmin};   
     }
 
    async register(newUser: RegisterDto): Promise<RegisterUserResponse>{
@@ -26,16 +26,20 @@ export class UserService {
         return this.filter(user);
     }
 
-    async getAllUsers(): Promise<RegisterUserResponseArray>{
+    async getAllUsers(isAdmin: RegisterUserResponse): Promise<RegisterUserResponseArray>{
+        
         const userName = await User.find();
-
         const listOfUsers = [];
-
-        userName.forEach(user =>{
-            listOfUsers.push(user.name)
-        })
-
-        return listOfUsers
+        
+        if(isAdmin.isAdmin){
+            userName.forEach(user =>{
+                listOfUsers.push(user.name)
+            })
+        }
+        
+        
+        return listOfUsers;
+        
     }
 
     async getUserByName(name: RegisterDto): Promise<RegisterUserResponseArray>{
