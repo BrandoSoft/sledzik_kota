@@ -77,7 +77,7 @@ Nest is [MIT licensed](LICENSE).
 - Nest.js
 - TypeORM
 - JWT
-  -passportjs
+- passportjs
 - passport-jwt
 
 ## How to API (coords)
