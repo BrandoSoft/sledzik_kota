@@ -72,17 +72,15 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
-## Nest.js
+## Used
 
-## TypeORM
+- Nest.js
+- TypeORM
+- JWT
+  -passportjs
+- passport-jwt
 
-## JWT
-
-## passportjs
-
-## passport-jwt
-
-## How to API (coords)
+-- How to API (coords)
 
 - Add to DB
 
@@ -155,6 +153,8 @@ Get /user/hid/:hid
 
 ```
 
+- Login
+
 ```bash
 Post /auth/login/
 
@@ -163,8 +163,7 @@ Post /auth/login/
 		"pwd": "1234"
   }
 
-```
+- Logout
 
-```bash
 Get  /auth/logout
 ```
