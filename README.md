@@ -122,20 +122,6 @@ GET coords/:hid
 
 ## How To API (users)
 
-- register user
-
-```bash
-POST /user/register
-
-{
-    {
-      "email": "user@example.com",
-      "name": "Username",
-      "hid": "HardwareID"
-    }
-}
-```
-
 - Get all users (only for admin)
 
 ```bash
@@ -151,6 +137,20 @@ Get /user/email/:email
 
 Get /user/hid/:hid
 
+```
+
+- register user
+
+```bash
+POST /user/register
+
+{
+    {
+      "email": "user@example.com",
+      "name": "Username",
+      "hid": "HardwareID"
+    }
+}
 ```
 
 - Login

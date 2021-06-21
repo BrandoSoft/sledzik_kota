@@ -55,4 +55,8 @@ export class UserService {
 
         return User.find(email)
     }
+
+    helloMessage(){
+        return 'hello'
+    }
 }

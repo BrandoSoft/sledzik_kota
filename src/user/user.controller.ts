@@ -12,6 +12,13 @@ export class UserController {
         @Inject(UserService) private userService: UserService,
     ){
     }
+
+    @Get('/message')
+        getmessage(){
+            return this.userService.helloMessage();
+        }
+
+
     @Get('/')
     @UseGuards(AuthGuard('jwt'))
         showUsers(
