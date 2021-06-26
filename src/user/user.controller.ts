@@ -14,7 +14,7 @@ export class UserController {
     }
 
     @Get('/message')
-        getmessage(){
+        getMessage(){
             return this.userService.helloMessage();
         }
 
@@ -24,10 +24,10 @@ export class UserController {
         showUsers(
             @UserObj() user: User,
         ): Promise<RegisterUserResponseArray>{
+            console.log(user)
+            const userInfoFromRequest = user;
             
-            const isAdmin = user;
-            
-            return this.userService.getAllUsers(isAdmin);
+            return this.userService.getAllUsers(userInfoFromRequest);
         }
 
     @Get('/name/:name')
@@ -46,7 +46,7 @@ export class UserController {
         showUserByMail(
             @Param() email: RegisterDto,
         ): Promise<RegisterUserResponseArray>{
-            return this.userService.getUserByHid(email)
+            return this.userService.getUserByMail(email)
         }    
 
     @Post('/register')

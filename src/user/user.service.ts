@@ -26,12 +26,12 @@ export class UserService {
         return this.filter(user);
     }
 
-    async getAllUsers(isAdmin: RegisterUserResponse): Promise<RegisterUserResponseArray>{
+    async getAllUsers(userInfoFromRequest: RegisterUserResponse): Promise<RegisterUserResponseArray>{
         
         const userName = await User.find();
         const listOfUsers = [];
         
-        if(isAdmin.isAdmin){
+        if(userInfoFromRequest.isAdmin){
             userName.forEach(user =>{
                 listOfUsers.push(user.name)
             })

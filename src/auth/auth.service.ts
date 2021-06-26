@@ -9,7 +9,7 @@ import { JwtPayload } from './jwt.strategy';
 
 @Injectable()
 export class AuthService {
-    private createToken(currentTokenId: string): {accessToken: string, expiresIn: number} {
+    private static createToken(currentTokenId: string): {accessToken: string, expiresIn: number} {
         const payload: JwtPayload = { id: currentTokenId };
         const expiresIn = 60 * 60 * 24;
         const accessToken = sign(payload, 'JSDIA(*DUS(J(UAS(DJA(hf3OIC(ISUDJsod SJUAI*(DUJAKLSDJ9SDjASDJA*(SDUA)OWJKO', { expiresIn });
@@ -43,7 +43,8 @@ export class AuthService {
                 return res.json({error: 'Invalid login data!'});
             }
 
-            const token = await this.createToken(await this.generateToken(user));
+            const token = await AuthService.createToken(await this.generateToken(user))
+            // const token = await AuthService.createToken(await this.generateToken(user));
 
             return res
                 .cookie('jwt', token.accessToken, {
@@ -60,6 +61,7 @@ export class AuthService {
     async logout(user: User, res: Response) {
         try {
             user.currentTokenId = null;
+            console.log(res)
             await user.save();
             res.clearCookie(
                 'jwt',
@@ -75,6 +77,5 @@ export class AuthService {
         }
     }
 
-  
-};
+}
 
