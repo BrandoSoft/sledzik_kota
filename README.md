@@ -167,3 +167,8 @@ Post /auth/login/
 
 Get  /auth/logout
 ```
+
+- Get user hids
+```bash
+@Get('user/hids/:name')
+```

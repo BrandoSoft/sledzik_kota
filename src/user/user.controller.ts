@@ -39,7 +39,7 @@ export class UserController {
     @Get('/hids/:name')
     @UseGuards(AuthGuard('jwt'))
         getUserHids(
-            @Param() name: any,
+            @Param() name: Object,
         ): Promise<RegisterUserResponseArray>{
                return this.userService.returnUserHids(name);
         }

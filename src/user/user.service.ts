@@ -19,9 +19,7 @@ export class UserService {
 
         user.name = newUser.name;
         user.email = newUser.email;
-        // user.hid = newUser.hid;
         user.pwdHash = hashPwd(newUser.pwd);
-        // user.userHid = 'siema'
 
         await user.save();
 
@@ -54,10 +52,13 @@ export class UserService {
         const hids = await UserHid.find({where:
         {name: name.name}
         })
+        const tableOfUSerHids = [];
+
+        hids.forEach((item =>{
+        tableOfUSerHids.push(item.hid)}))
 
 
-
-        return hids;
+        return tableOfUSerHids;
     }
     async getUserByMail(email: RegisterDto): Promise<RegisterUserResponseArray>{
 
