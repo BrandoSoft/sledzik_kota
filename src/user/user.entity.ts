@@ -1,5 +1,14 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import {
+    BaseEntity,
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    OneToOne,
+    PrimaryGeneratedColumn,
+} from 'typeorm';
+import {UserHid} from './userHid.entity';
 
 @Entity()
 export class User extends BaseEntity{
@@ -26,4 +35,15 @@ export class User extends BaseEntity{
 
     @Column()
     isAdmin: boolean;
+    //
+    // @OneToMany(()=> UserHid, userHid => userHid.hid)
+    //     userHid: UserHid[];
+
+    // @ManyToOne(()=> UserHid, userHid => userHid.hid)
+    // userHid: UserHid;
+    //
+    @ManyToOne(()=> UserHid, userHid =>userHid.hid)
+    userHid: string;
+
+
 }

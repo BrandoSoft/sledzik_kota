@@ -36,11 +36,12 @@ export class UserController {
         ): Promise<RegisterUserResponseArray>{
             return this.userService.getUserByName(name);
         }
-    @Get('/hid/:hid')
-        showUserByHid(
-            @Param() hid: RegisterDto,
+    @Get('/hids/:name')
+    @UseGuards(AuthGuard('jwt'))
+        getUserHids(
+            @Param() name: any,
         ): Promise<RegisterUserResponseArray>{
-            return this.userService.getUserByHid(hid);
+               return this.userService.returnUserHids(name);
         }
     @Get('/email/:email')
         showUserByMail(

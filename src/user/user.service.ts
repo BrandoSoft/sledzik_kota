@@ -3,13 +3,14 @@ import { RegisterUserResponse, RegisterUserResponseArray } from "src/interfaces/
 import { RegisterDto } from "./dto/register.dto";
 import { User } from "./user.entity";
 import { hashPwd } from "./utils/hash-pwd";
+import { UserHid } from './userHid.entity';
 
 @Injectable()
 export class UserService {
 
     filter(user: User): RegisterUserResponse {
      const {id, email, hid, isAdmin} = user;
-     return {id, email, hid, isAdmin};   
+     return {id, email, hid, isAdmin};
     }
 
    async register(newUser: RegisterDto): Promise<RegisterUserResponse>{
@@ -18,8 +19,9 @@ export class UserService {
 
         user.name = newUser.name;
         user.email = newUser.email;
-        user.hid = newUser.hid;
+        // user.hid = newUser.hid;
         user.pwdHash = hashPwd(newUser.pwd);
+        // user.userHid = 'siema'
 
         await user.save();
 
@@ -47,9 +49,15 @@ export class UserService {
         return User.find(name);
     }
 
-    async getUserByHid(hid: RegisterDto): Promise<RegisterUserResponseArray>{
+    async returnUserHids(name: any): Promise<any>{
 
-        return User.find(hid)
+        const hids = await UserHid.find({where:
+        {name: name.name}
+        })
+
+
+
+        return hids;
     }
     async getUserByMail(email: RegisterDto): Promise<RegisterUserResponseArray>{
 

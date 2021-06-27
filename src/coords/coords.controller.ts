@@ -21,6 +21,13 @@ export class CoordsController {
       return this.coordsService.getUserCoords(hid)
   }
 
+  @Get('userhids/:userHid')
+    getUserHids(
+    @Param() userHid: string,
+    ): Promise<string>{
+      return this.coordsService.returnUserHids(userHid)
+    }
+
 
   @Post('/')
   addCordsToDatabase(
