@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { CoordsInterfaceResponse, CoordsInterfaceResponseArray } from 'src/interfaces/coords';
 import { Coords } from './coords.entity';
 import { addNewCoordsDto } from './dto/newCoords.dto';
-import { User } from '../user/user.entity';
+
 
 
 @Injectable()
 export class CoordsService {
 
-    async getUserCoords(userHid : addNewCoordsDto) :Promise<CoordsInterfaceResponseArray>{
+    async getUserCoordsByHid(userHid : addNewCoordsDto) :Promise<CoordsInterfaceResponseArray>{
         return Coords.find(userHid);
     }
 
@@ -26,17 +26,7 @@ export class CoordsService {
 
         return coords;
     }
-    async  returnUserHids(userHid: string): Promise<string>{
-     const hid = userHid;
 
-      const hids = await Coords.find({ where: { hid: 2 } });
-      console.log(hid)
-      // console.log(hids)
-
-      return 'ok'
-
-
-    }
 
     async addTableOfCoordsToDB(newTable:addNewCoordsDto[]): Promise<CoordsInterfaceResponse[]>{
 
@@ -49,7 +39,7 @@ export class CoordsService {
             coords.latitude = item.latitude;
             coords.longitude = item.longitude;
 
-             await coords.save();
+            await coords.save();
         });
 
         

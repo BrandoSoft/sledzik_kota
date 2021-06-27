@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
 import { CoordsInterfaceResponse, CoordsInterfaceResponseArray } from 'src/interfaces/coords';
-import { Coords } from './coords.entity';
 import { CoordsService } from './coords.service';
 import { addNewCoordsDto } from './dto/newCoords.dto';
 
@@ -18,15 +17,8 @@ export class CoordsController {
     @Param() hid :addNewCoordsDto,
   ): Promise<CoordsInterfaceResponseArray>
   {
-      return this.coordsService.getUserCoords(hid)
+      return this.coordsService.getUserCoordsByHid(hid)
   }
-
-  @Get('userhids/:userHid')
-    getUserHids(
-    @Param() userHid: string,
-    ): Promise<string>{
-      return this.coordsService.returnUserHids(userHid)
-    }
 
 
   @Post('/')
