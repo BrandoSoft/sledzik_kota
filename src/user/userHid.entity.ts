@@ -14,6 +14,9 @@ export class UserHid extends BaseEntity{
     @Column()
     name: string;
 
+    @Column()
+    catName: string;
+
     // @ManyToOne(()=> User, user => user.hid)
     // user: User;
 
