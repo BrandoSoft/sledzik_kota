@@ -6,6 +6,9 @@ import { RegisterDto } from './dto/register.dto';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 
+import {AddNewHidAndNameDto} from './dto/userHid.dto';
+import { addNewCoordsDto } from '../coords/dto/newCoords.dto';
+
 @Controller('user')
 export class UserController {
     constructor(
@@ -43,6 +46,14 @@ export class UserController {
         ): Promise<RegisterUserResponseArray>{
                return this.userService.returnUserHids(name);
         }
+    @Post('/addhid/')
+    @UseGuards(AuthGuard('jwt'))
+        addHidAndCatName(
+            @Body() hidAndName: AddNewHidAndNameDto,
+        ): Promise<string>{
+                return this.userService.addHidAndName(hidAndName)
+        }
+
     @Get('/email/:email')
         showUserByMail(
             @Param() email: RegisterDto,

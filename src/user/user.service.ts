@@ -4,6 +4,8 @@ import { RegisterDto } from "./dto/register.dto";
 import { User } from "./user.entity";
 import { hashPwd } from "./utils/hash-pwd";
 import { UserHid } from './userHid.entity';
+import { AddNewHidAndNameDto } from './dto/userHid.dto';
+import { addNewCoordsDto } from '../coords/dto/newCoords.dto';
 
 @Injectable()
 export class UserService {
@@ -25,6 +27,22 @@ export class UserService {
 
         return this.filter(user);
     }
+
+    async addHidAndName(hidAndName: AddNewHidAndNameDto): Promise<string>{
+
+      const newData =  new UserHid();
+
+      newData.hid = hidAndName.hid;
+      newData.catName = hidAndName.catName;
+      newData.name = hidAndName.name;
+
+      await newData.save();
+
+      return 'all ok'
+
+    }
+
+
 
     async getAllUsers(userInfoFromRequest: RegisterUserResponse): Promise<RegisterUserResponseArray>{
         
@@ -64,6 +82,7 @@ export class UserService {
 
         userHids.catName = item.catName;
         userHids.hid = item.hid;
+        userHids.id = item.id;
         tableOfUSerHids.push(userHids)
         }))
 
