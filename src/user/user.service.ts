@@ -30,7 +30,10 @@ export class UserService {
         
         const userName = await User.find();
         const listOfUsers = [];
-        
+
+
+
+
         if(userInfoFromRequest.isAdmin){
             userName.forEach(user =>{
                 listOfUsers.push(user.name)
@@ -52,10 +55,18 @@ export class UserService {
         const hids = await UserHid.find({where:
         {name: name.name}
         })
+
         const tableOfUSerHids = [];
 
+
         hids.forEach((item =>{
-        tableOfUSerHids.push(item.hid)}))
+        const userHids = new UserHid();
+
+        userHids.catName = item.catName;
+        userHids.hid = item.hid;
+        tableOfUSerHids.push(userHids)
+        }))
+
 
 
         return tableOfUSerHids;
