@@ -2,13 +2,9 @@ import {
     BaseEntity,
     Column,
     Entity,
-    JoinColumn,
-    ManyToOne,
-    OneToMany,
-    OneToOne,
     PrimaryGeneratedColumn,
 } from 'typeorm';
-import {UserHid} from './userHid.entity';
+
 
 @Entity()
 export class User extends BaseEntity{
