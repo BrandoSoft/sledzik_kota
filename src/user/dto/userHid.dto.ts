@@ -3,5 +3,6 @@ export class AddNewHidAndNameDto{
   hid: string;
   catName: string;
   name: string;
+  catId: string;
 }
 

@@ -6,6 +6,7 @@ import { hashPwd } from "./utils/hash-pwd";
 import { UserHid } from './userHid.entity';
 import { AddNewHidAndNameDto } from './dto/userHid.dto';
 import { addNewCoordsDto } from '../coords/dto/newCoords.dto';
+import { CatInfo } from '../interfaces/catId';
 
 @Injectable()
 export class UserService {
@@ -93,6 +94,20 @@ export class UserService {
     async getUserByMail(email: RegisterDto): Promise<RegisterUserResponseArray>{
 
         return User.find(email)
+    }
+
+    async DelCatById(catID: CatInfo): Promise<UserHid>{
+
+      let name = await UserHid.findOne({where:
+          {id: catID.catId }
+      })
+        await UserHid.remove(name)
+      // console.log(UserHid.findOne({where:
+      //     {name: catID.catId }
+      // }))
+
+
+      return name
     }
 
     helloMessage(){

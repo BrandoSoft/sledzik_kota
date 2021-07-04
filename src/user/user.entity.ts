@@ -42,8 +42,8 @@ export class User extends BaseEntity{
     // @ManyToOne(()=> UserHid, userHid => userHid.hid)
     // userHid: UserHid;
     //
-    @ManyToOne(()=> UserHid, userHid =>userHid.hid)
-    userHid: string;
+    // @ManyToOne(()=> UserHid, userHid =>userHid.hid)
+    // userHid: string;
 
 
 }

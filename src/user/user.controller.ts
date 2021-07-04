@@ -1,13 +1,15 @@
-import { Body, Controller, Get, Inject, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UserObj } from 'src/decorators/user-obj.decorator';
 import { RegisterUserResponse, RegisterUserResponseArray } from 'src/interfaces/user';
 import { RegisterDto } from './dto/register.dto';
 import { User } from './user.entity';
 import { UserService } from './user.service';
+import {CatInfo} from 'src/interfaces/catId'
 
 import {AddNewHidAndNameDto} from './dto/userHid.dto';
 import { addNewCoordsDto } from '../coords/dto/newCoords.dto';
+import { UserHid } from './userHid.entity';
 
 @Controller('user')
 export class UserController {
@@ -67,4 +69,11 @@ export class UserController {
         ): Promise<RegisterUserResponse>{
             return this.userService.register(newUser)
         }
+    @Delete('/deletecat/:catId')
+    @UseGuards(AuthGuard('jwt'))
+        deleteCatHidAndCatName(
+          @Param() catIdToDelete : CatInfo,
+    ): Promise<UserHid>{
+        return  this.userService.DelCatById(catIdToDelete)
+    }
 }
