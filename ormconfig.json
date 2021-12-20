@@ -2,7 +2,7 @@
     "type": "mysql",
     "host": "sql73.lh.pl",
     "port": 3306,
-    "username": "serwer123278",
+    "username": "serwer123278_sledzik",
     "password": "sledzik123",
     "database": "serwer123278_sledzik",
     "entities": [
