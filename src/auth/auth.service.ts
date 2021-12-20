@@ -53,7 +53,9 @@ export class AuthService {
                     httpOnly: true,
                 })
                 .json({ok: true,
-                userName: user.name});
+                userName: user.name,
+                  cookie: token.accessToken}
+                  );
         } catch (e) {
             return res.json({error: e.message});
         }

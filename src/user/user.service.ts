@@ -5,7 +5,6 @@ import { User } from "./user.entity";
 import { hashPwd } from "./utils/hash-pwd";
 import { UserHid } from './userHid.entity';
 import { AddNewHidAndNameDto } from './dto/userHid.dto';
-import { addNewCoordsDto } from '../coords/dto/newCoords.dto';
 import { CatInfo } from '../interfaces/catId';
 
 @Injectable()
@@ -17,7 +16,7 @@ export class UserService {
     }
 
    async register(newUser: RegisterDto): Promise<RegisterUserResponse>{
-        
+
         const user = new User();
 
         user.name = newUser.name;
@@ -46,7 +45,7 @@ export class UserService {
 
 
     async getAllUsers(userInfoFromRequest: RegisterUserResponse): Promise<RegisterUserResponseArray>{
-        
+
         const userName = await User.find();
         const listOfUsers = [];
 
@@ -58,10 +57,10 @@ export class UserService {
                 listOfUsers.push(user.name)
             })
         }
-        
-        
+
+
         return listOfUsers;
-        
+
     }
 
     async getUserByName(name: RegisterDto): Promise<RegisterUserResponseArray>{

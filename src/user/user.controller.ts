@@ -5,10 +5,9 @@ import { RegisterUserResponse, RegisterUserResponseArray } from 'src/interfaces/
 import { RegisterDto } from './dto/register.dto';
 import { User } from './user.entity';
 import { UserService } from './user.service';
-import {CatInfo} from 'src/interfaces/catId'
+import { CatInfo } from 'src/interfaces/catId';
 
-import {AddNewHidAndNameDto} from './dto/userHid.dto';
-import { addNewCoordsDto } from '../coords/dto/newCoords.dto';
+import { AddNewHidAndNameDto } from './dto/userHid.dto';
 import { UserHid } from './userHid.entity';
 
 @Controller('user')
@@ -25,14 +24,12 @@ export class UserController {
 
 
     @Get('/')
-    @UseGuards(AuthGuard('jwt'))
+    // @UseGuards(AuthGuard('jwt'))
         showUsers(
             @UserObj() user: User,
         ): Promise<RegisterUserResponseArray>{
             console.log(user)
-            const userInfoFromRequest = user;
-            
-            return this.userService.getAllUsers(userInfoFromRequest);
+        return this.userService.getAllUsers(user);
         }
 
     @Get('/name/:name')
@@ -42,14 +39,14 @@ export class UserController {
             return this.userService.getUserByName(name);
         }
     @Get('/hids/:name')
-    @UseGuards(AuthGuard('jwt'))
+    // @UseGuards(AuthGuard('jwt'))
         getUserHids(
             @Param() name: Object,
         ): Promise<RegisterUserResponseArray>{
                return this.userService.returnUserHids(name);
         }
     @Post('/addhid/')
-    @UseGuards(AuthGuard('jwt'))
+    // @UseGuards(AuthGuard('jwt'))
         addHidAndCatName(
             @Body() hidAndName: AddNewHidAndNameDto,
         ): Promise<string>{
@@ -61,7 +58,7 @@ export class UserController {
             @Param() email: RegisterDto,
         ): Promise<RegisterUserResponseArray>{
             return this.userService.getUserByMail(email)
-        }    
+        }
 
     @Post('/register')
         register(
@@ -70,7 +67,7 @@ export class UserController {
             return this.userService.register(newUser)
         }
     @Delete('/deletecat/:catId')
-    @UseGuards(AuthGuard('jwt'))
+    // @UseGuards(AuthGuard('jwt'))
         deleteCatHidAndCatName(
           @Param() catIdToDelete : CatInfo,
     ): Promise<UserHid>{

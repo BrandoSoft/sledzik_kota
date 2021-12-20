@@ -19,9 +19,9 @@ export class AuthController {
   ): Promise<any> {
     return this.authService.login(req, res)
   }
-  
+
   @Get('/logout')
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   async logout(
     @UserObj() user: User,
     @Res() res: Response){
