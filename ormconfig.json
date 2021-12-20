@@ -1,0 +1,14 @@
+{
+    "type": "mysql",
+    "host": "sql73.lh.pl",
+    "port": 3306,
+    "username": "serwer123278",
+    "password": "sledzik123",
+    "database": "serwer123278_sledzik",
+    "entities": [
+        "dist/**/**.entity{.ts,.js}"
+    ],
+    "logging": true,
+    "bigNumberString": false,
+    "synchronize": true
+}
