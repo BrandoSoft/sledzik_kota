@@ -26,20 +26,18 @@ export class User extends BaseEntity{
     })
     currentTokenId: string | null;
 
-    @Column()
+    @Column({
+        nullable: true,
+        default: null,
+    })
     hid: string;
 
-    @Column()
+    @Column({
+        nullable: true,
+        default: false,
+    })
     isAdmin: boolean;
-    //
-    // @OneToMany(()=> UserHid, userHid => userHid.hid)
-    //     userHid: UserHid[];
 
-    // @ManyToOne(()=> UserHid, userHid => userHid.hid)
-    // userHid: UserHid;
-    //
-    // @ManyToOne(()=> UserHid, userHid =>userHid.hid)
-    // userHid: string;
 
 
 }
