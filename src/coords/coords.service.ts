@@ -42,15 +42,22 @@ export class CoordsService {
             await coords.save();
         });
 
-        
+
 
         return newTable
     }
 
+  async clearCat(hid: addNewCoordsDto) {
+    let catCoords =   await Coords.find(hid);
+
+    await Coords.remove(catCoords)
+
+    return 'usunieto'
+  }
 }
 
 
-// {	
+// {
 // 	"hid": "000001",
 //   "latitude": "dasdasd",
 //   "longitude": "waszggggka",
@@ -76,7 +83,7 @@ export class CoordsService {
 //       "longitude": "21.04925",
 //       "date": "4-5-2021 16:37:41"
 //     },
-//     {    
+//     {
 //       "hid": "128",
 //       "latitude": "52.20888",
 //       "longitude": "21.04934",

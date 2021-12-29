@@ -101,10 +101,6 @@ export class UserService {
           {id: catID.catId }
       })
         await UserHid.remove(name)
-      // console.log(UserHid.findOne({where:
-      //     {name: catID.catId }
-      // }))
-
 
       return name
     }
